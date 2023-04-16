@@ -1,0 +1,25 @@
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav  #sidenav mode="side" [(opened)]="opened"
+                 >
+
+      <ul class="collection">
+        <a routerLink = '/'> <li style="background-color: transparent;" class="collection-item">Menu</li></a>
+        <a routerLink = '/orders'><li class="collection-item">Orders</li></a>
+        <a routerLink = '/feedback'><li class="collection-item">Reviews</li></a> 
+        <a routerLink = '/myorders'><li class="collection-item">My Orders</li></a> 
+        
+        <!-- <li class="collection-item">Alvin</li> -->
+      </ul>
+            
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+  
+      <p><button mat-button (click)="sidenav.toggle()"> <i class="material-icons">menu</i></button></p>
+        <router-outlet></router-outlet> 
+
+    </mat-sidenav-content>
+    
+  </mat-sidenav-container>
+  

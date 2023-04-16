@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-upload-menu',
@@ -6,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./upload-menu.component.css']
 })
 export class UploadMenuComponent implements OnInit {
-
+  //@ViewChild('sidenav') sidenav: MatSidenav;
   constructor() { }
-
+ 
   ngOnInit(): void {
   }
 
