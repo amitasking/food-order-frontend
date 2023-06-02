@@ -3,6 +3,8 @@ import { ActivatedRoute, NavigationEnd, ParamMap, Router } from '@angular/router
 import { FoodMenuService } from '../services/food-menu.service';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { FormControl } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 
 @Component({
   selector: 'app-food-type',
@@ -16,7 +18,7 @@ export class FoodTypeComponent implements OnInit {
   foodItems: [] = []
   type: any = ""
   day : any = ""
-  constructor(private router: Router, private route: ActivatedRoute, private foodMenuService: FoodMenuService) { }
+  constructor(private _bottomSheet: MatBottomSheet, private router: Router, private route: ActivatedRoute, private foodMenuService: FoodMenuService) { }
   defaultDate: Date = new Date();
   dayMap = new Map(
     [
@@ -31,6 +33,13 @@ export class FoodTypeComponent implements OnInit {
 
   )
   ngOnInit(): void {
+    this.foodMenuService.daySelectedEvent.subscribe(res => {
+      this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, res).subscribe((res: any) => {
+        console.log(res);
+        this.day = res
+        this.foodItems = res
+      })
+    })
     // alert(this.defaultDate)
     this.route.queryParamMap.subscribe((params: ParamMap) => {
       // Access query parameters here
@@ -48,6 +57,7 @@ export class FoodTypeComponent implements OnInit {
       this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, this.defaultDate.getDay()).subscribe((res: any) => {
         console.log(res);
         this.foodItems = res
+       
       })
     });
   };
@@ -74,6 +84,7 @@ export class FoodTypeComponent implements OnInit {
 
 
   openDatePicker() {
-    this.datePicker.open();
+    //this.datePicker.open();
+    this._bottomSheet.open(BottomSheetComponent);
   }
 }

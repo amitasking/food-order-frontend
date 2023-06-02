@@ -30,7 +30,9 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angul
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { MatButtonModule } from '@angular/material/button';
 // import { DatepickerModule } from 'ng2-datepicker';
 // import {AngularFireModule} from '@angular/fire/compat';
 // import {AngularFireAuthModule} from '@angular/fire/compat/auth';
@@ -62,9 +64,12 @@ import { MatNativeDateModule } from '@angular/material/core';
     FoodTypeComponent,
     OrderplacedComponent,
     FooditemsComponent,
+    BottomSheetComponent,
    // QrCodeGenratorComponent
   ],
   imports: [
+    MatButtonModule,
+    MatBottomSheetModule,
     ReactiveFormsModule,
     FormsModule,
     MatNativeDateModule,

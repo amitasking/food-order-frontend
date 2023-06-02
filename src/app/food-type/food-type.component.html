@@ -1,7 +1,7 @@
 <div class="row">
 
       <div class="fixed-action-btn">
-            <a class="btn-floating btn-large red">
+            <a class="btn-floating btn-">
                   <i (click)="openDatePicker()" class="large material-icons">date_range</i>
             </a>
             <!-- <ul>
@@ -12,7 +12,7 @@
       </ul> -->
       </div>
 
-      <h2 style="text-align: center;color:black"> <i class="material-icons">restaurant_menu</i> MENU </h2>
+      <h2 style="text-align: center;color:black"> <i class="material-icons">restaurant_menu</i> MENU  {{getDay()}}</h2>
       <div class="row">
             <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
                   <!-- <li class="tab"><a class="active" href="#breakfast">All</a></li> -->
@@ -86,3 +86,5 @@
                         <mat-datepicker class="fullscreen-datepicker" #picker></mat-datepicker>
                   </mat-form-field>
             </div>
+
+        
