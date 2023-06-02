@@ -1,0 +1,48 @@
+li:hover {
+    color: white;
+    background-color: rgb(90, 62, 90);
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+/* .fullscreen-datepicker {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+ 
+  }
+   */
+
+   .fixed-action-btn{
+    right: auto; 
+    margin-left: 5%;  
+}
+
+li {
+    color: black;
+    cursor: pointer;
+}
+
+/* input {
+    display: inline-block;
+    position: relative;
+} */
+/* 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+} */
+

@@ -1,2 +1,35 @@
-<app-side-nav></app-side-nav>
-<!-- <app-cam></app-cam> -->
+<div>
+   <amplify-authenticator style="margin-top: 20%;">
+   <ng-template
+     amplifySlot="authenticated"
+     let-user="user"
+     let-signOut="signOut"
+   >
+     
+<div class="row">
+   <div style="background-position: center; opacity: 0.7; width: 100%; height: 17em; background: url('https://foodginie.com/images/food-banner.jpg'); background-repeat: no-repeat; background-size: cover; background-position-y: 7%;" class="row">
+      <img style="height:110px; width: 110px;" src="../../assets/—Pngtree—food logo vector design restaurant_3628304.png" alt="">
+      <!-- <img style="height:110px; width: 110px; position: absolute;  right: 0%; top:0%" src="../../assets/—Pngtree—food logo vector design restaurant_3628304.png" alt=""> -->
+      <!-- <button  (click)="signOut()">Sign Out</button> -->
+      <a class="btn-floating btn-large waves-effect waves-light red"  (click)="signOut()" style=" position: absolute;  right: 2%; top : 35px;" ><i class="material-icons">exit_to_app</i></a>
+      <!-- <button class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></button> -->
+      
+   </div>
+   <div style="width: 100%;" class="row">
+      <div class="col s12">
+        
+          <!-- <div *ngIf = "foodTypeSelected && foodItems" class="row">
+           <div class="col m4 s12" *ngFor = "let foodItem of foodItems">
+               <app-ards [foodItem] = 'foodItem'></app-ards>
+           </div>
+          </div>
+         <app-food-type *ngIf = "!foodTypeSelected" (foodTypeSelected) = "foodTypeSelectedEvent($event)"></app-food-type> -->
+          <router-outlet></router-outlet>
+      </div>
+   </div>
+</div>
+<!-- <router-outlet></router-outlet>  -->
+   
+   </ng-template>
+ </amplify-authenticator>
+</div>

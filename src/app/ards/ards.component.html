@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col s12">
+        <!-- <input type="text" class="datepicker"> -->
+        <div class="card">
+          <!-- <div class="row"> -->
+            <!-- <div class="col s12"> -->
+              
+            <!-- </div> -->
+          <!-- </div> -->
+
+            <div class="card-image">
+                <span style="position: absolute; z-index: 12;" class="new badge" data-badge-caption="30% OFF!"></span>
+              <img style="height: 250px; width: 100%;" [src]='foodItem.image'>
+         
+              <!-- <span class="card-title">Dum Aloo</span> -->
+            </div>
+            <!-- <div class="card-content">
+                <h2>Name</h2>
+                <p>Very delicious food with nutrition value</p>
+              </div> -->
+                <div class="card-content">
+                    <h2>{{foodItem.name}}</h2>
+                    <p>{{foodItem.description}}</p>    
+                    <div class="card-stats-container">
+                    <div class="card-stats">
+                        <h1 class="stats-heading">
+                            Carbs
+                        </h1>
+                        <p class="stats-para">
+                            {{foodItem.carbs}}
+                        </p>
+                    </div>
+                     <div class="card-stats">
+                        <h1 class="stats-heading">
+                            Calories
+                        </h1>
+                        <p class="stats-para">
+                            {{foodItem.calories}}
+                        </p>
+                    </div>
+        
+                    <div class="card-stats">
+                        <h1 class="stats-heading">
+                            Protein
+                        </h1>
+                        <p class="stats-para">
+                            {{foodItem.protein}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+           <div class="row">
+            <div class="col s12">
+                <div class="card-action">
+                    <button (click) = "orderPlaced(foodItem)"  style="height: 52px; background-color: rgb(59, 44, 44); width: 100%;" class="btn waves-effect waves-light " type="submit" name="action">
+                        Place Order
+                     </button>
+                </div>
+            </div>
+            
+           </div>
+        </div>
+    </div>
+</div>

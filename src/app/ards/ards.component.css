@@ -1,0 +1,24 @@
+img {
+    opacity: 0.8;
+}
+
+span {
+    font-weight: 900;
+}
+
+.card-stats-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+
+.stats-heading{
+    font-size: 1em;
+    color: #8e8e8e;
+    margin-bottom: .7em;
+}
+
+.stats-para{
+    font-size: 1.5em;
+    font-weight: bold;
+}

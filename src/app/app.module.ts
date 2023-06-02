@@ -16,6 +16,35 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {WebcamModule} from 'ngx-webcam';
 import { CamComponent } from './cam/cam.component';
 import { MyordersComponent } from './myorders/myorders.component';
+// import { SignUpComponent } from './sign-up/sign-up.component';
+// import { SignInComponent } from './sign-in/sign-in.component';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { ArdsComponent } from './ards/ards.component';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { FoodTypeComponent } from './food-type/food-type.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { OrderplacedComponent } from './orderplaced/orderplaced.component';
+import { FooditemsComponent } from './fooditems/fooditems.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+
+// import { DatepickerModule } from 'ng2-datepicker';
+// import {AngularFireModule} from '@angular/fire/compat';
+// import {AngularFireAuthModule} from '@angular/fire/compat/auth';
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDArL6-25s9XhRptnRbOc97V9IZCmH7myQ",
+//   authDomain: "food-order-7e41e.firebaseapp.com",
+//   projectId: "food-order-7e41e",
+//   storageBucket: "food-order-7e41e.appspot.com",
+//   messagingSenderId: "136956368854",
+//   appId: "1:136956368854:web:9d392e8c8c51f95b353677",
+//   measurementId: "G-GN7LP96799"
+// };
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,18 +56,46 @@ import { MyordersComponent } from './myorders/myorders.component';
     SideNavComponent,
     CamComponent,
     MyordersComponent,
+    // SignUpComponent,
+    // SignInComponent,
+    ArdsComponent,
+    FoodTypeComponent,
+    OrderplacedComponent,
+    FooditemsComponent,
    // QrCodeGenratorComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+     MatInputModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    // DatepickerModule,
+    AmplifyAuthenticatorModule,
+    FormsModule,
     WebcamModule,
     MatToolbarModule,
     MatSidenavModule,
+    HttpClientModule,
     // QRCodeModule,
     NotifierModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    // AngularFireModule.initializeApp(firebaseConfig),
+    // AngularFireAuthModule,
+    // FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     
   ],
   providers: [],
