@@ -7,11 +7,24 @@
    >
      
 <div class="row">
-   <div style="background-position: center; opacity: 0.7; width: 100%; height: 17em; background: url('https://foodginie.com/images/food-banner.jpg'); background-repeat: no-repeat; background-size: cover; background-position-y: 7%;" class="row">
-      <img style="height:110px; width: 110px;" src="../../assets/—Pngtree—food logo vector design restaurant_3628304.png" alt="">
+   <div  class="">
+      <div class="col s3">
+       
+         <!-- <a (click)="signOut()" style = "color: black !important;" class="btn-floating btn-large   "   style=" top : 10px;" ><i class="material-icons">exit_to_app</i></a> -->
+    <a   (click)="drawer.toggle()" style = "color: black !important;" class="btn-floating btn-large   "   style=" top : 10px;" ><i class="material-icons">menu</i></a>
+  
+   </div>
+   <div style="margin-top: 25px;" class="col s6">
+
+         <h2 style="text-align: center;color:black"> <i class="material-icons">restaurant_menu</i> MENU </h2>
+   </div>
+   <div class="col s3">
+      <img style="height:70px; width: 70px;" src="../../assets/—Pngtree—food logo vector design restaurant_3628304.png" alt="">
+   </div>
+      <!-- <img style="height:70px; width: 70px;" src="../../assets/—Pngtree—food logo vector design restaurant_3628304.png" alt=""> -->
       <!-- <img style="height:110px; width: 110px; position: absolute;  right: 0%; top:0%" src="../../assets/—Pngtree—food logo vector design restaurant_3628304.png" alt=""> -->
       <!-- <button  (click)="signOut()">Sign Out</button> -->
-      <a class="btn-floating btn-large waves-effect waves-light red"  (click)="signOut()" style=" position: absolute;  right: 2%; top : 35px;" ><i class="material-icons">exit_to_app</i></a>
+      <!-- <a style = "color: black !important;" class="btn-floating btn-large   "  (click)="signOut()" style=" position: absolute;  right: 2%; top : 35px;" ><i class="material-icons">exit_to_app</i></a> -->
       <!-- <button class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></button> -->
       
    </div>
@@ -24,12 +37,43 @@
            </div>
           </div>
          <app-food-type *ngIf = "!foodTypeSelected" (foodTypeSelected) = "foodTypeSelectedEvent($event)"></app-food-type> -->
-          <router-outlet></router-outlet>
+       
       </div>
    </div>
 </div>
 <!-- <router-outlet></router-outlet>  -->
-   
+<mat-drawer-container style="height: 100%;" class="example-container" autosize>
+   <mat-drawer #drawer class="example-sidenav" mode="side">
+     
+  <ul id="slide-" class="sidebar">
+   <li><a routerLink="" class="waves-effect">Menu</a></li>
+   <li><a routerLink="myorders" class="waves-effect" >My Orders</a></li>
+   <li><a routerLink="myorders" class="waves-effect" (click)="signOut()">Sign Out</a></li>
+ </ul>
+  
+     <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p> -->
+     <!-- <button (click)="showFiller = !showFiller" mat-raised-button>
+       Toggle extra text
+     </button> -->
+   </mat-drawer>
+
+
+ 
+   <div class="example-sidenav-content">
+ 
+   </div>
+   <mat-drawer mode="side" >Drawer content</mat-drawer>
+   <mat-drawer-content (click)="drawer.close()"><router-outlet></router-outlet></mat-drawer-content>
+   <!-- <mat-drawer-content>Main content</mat-drawer-content> -->
+</mat-drawer-container>
    </ng-template>
  </amplify-authenticator>
 </div>
+
+
+
+<!-- 
+  -->    
+  <!-- <button type="button" mat-button (click)="drawer.toggle()">
+       Toggle sidenav
+     </button> -->

@@ -1,0 +1,13 @@
+
+
+
+span {
+    color : rgb(248,192,17);
+    font-weight: 550;
+}
+
+p {
+    margin-top: 3px !important;
+    font-weight: 400;
+    color: rgb(148, 144, 144);
+}

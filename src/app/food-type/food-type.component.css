@@ -46,3 +46,33 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: auto;
 } */
 
+
+
+.active {
+    background: rgb(248,192,17) !important;
+    color: white !important;
+}
+
+li {
+    margin-top: 7px;
+}
+ 
+li:hover {
+    background-color: transparent;
+}
+
+.days {
+    display: ;
+}
+
+
+.selected {
+   background-color: rgb(248,192,17) !important;
+   color : white !important;
+}
+
+.chip {
+    background-color:white;
+   color : rgb(248,192,17); 
+}
+

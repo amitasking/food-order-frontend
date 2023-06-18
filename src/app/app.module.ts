@@ -33,6 +33,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { MatButtonModule } from '@angular/material/button';
+import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import {MatChipsModule} from '@angular/material/chips';
 // import { DatepickerModule } from 'ng2-datepicker';
 // import {AngularFireModule} from '@angular/fire/compat';
 // import {AngularFireAuthModule} from '@angular/fire/compat/auth';
@@ -68,6 +70,9 @@ import { MatButtonModule } from '@angular/material/button';
    // QrCodeGenratorComponent
   ],
   imports: [
+    BrowserModule,
+    MatSidenavModule,
+    MatChipsModule,
     MatButtonModule,
     MatBottomSheetModule,
     ReactiveFormsModule,
@@ -75,6 +80,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatNativeDateModule,
     MatDatepickerModule,
      MatInputModule,
+     MatDialogModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     BrowserModule,

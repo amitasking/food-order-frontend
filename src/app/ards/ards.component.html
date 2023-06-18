@@ -9,7 +9,7 @@
           <!-- </div> -->
 
             <div class="card-image">
-                <span style="position: absolute; z-index: 12;" class="new badge" data-badge-caption="30% OFF!"></span>
+                <span style= "height: 25px;; background-color: rgb(245, 200, 64) ; font-size: small; font-weight: 580; position: absolute; z-index: 12; right: 0%;" class="new badge" data-badge-caption="30% OFF!"></span>
               <img style="height: 250px; width: 100%;" [src]='foodItem.image'>
          
               <!-- <span class="card-title">Dum Aloo</span> -->
@@ -19,8 +19,8 @@
                 <p>Very delicious food with nutrition value</p>
               </div> -->
                 <div class="card-content">
-                    <h2>{{foodItem.name}}</h2>
-                    <p>{{foodItem.description}}</p>    
+                    <h2 class="sofia">{{foodItem.name}}</h2>
+                    <p class="sofia">{{foodItem.description}}</p>    
                     <div class="card-stats-container">
                     <div class="card-stats">
                         <h1 class="stats-heading">
@@ -52,13 +52,33 @@
            <div class="row">
             <div class="col s12">
                 <div class="card-action">
-                    <button (click) = "orderPlaced(foodItem)"  style="height: 52px; background-color: rgb(59, 44, 44); width: 100%;" class="btn waves-effect waves-light " type="submit" name="action">
-                        Place Order
-                     </button>
+                    <button (click) = "openModal(foodItem)"    style="height: 52px; background-color: rgb(245, 200, 64) !important; width: 100%;"  class="waves-effect  btn modal-trigger" href="#myModal">  Place Order</button>
+
+                    <!-- <a class = "btn modal-trigger" class="btn waves-effect waves-light "  name="action">
+                      
+                    </a> -->
                 </div>
             </div>
-            
+           
            </div>
         </div>
     </div>
 </div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <h4>Let's Order! </h4>
+      <p *ngIf="cutOff()">Are you sure you want to order {{foodItem.name}} for {{day}} </p>
+      <p *ngIf="!cutOff() && selectedFoodItem.menuType=='lunch'">We'r Sorry, You have to order lunch before 10 AM</p>
+      <p *ngIf="!cutOff() && selectedFoodItem.menuType=='dinner'">We'r Sorry, You have to order lunch before 4 PM</p>
+    </div>
+    <div class="modal-footer">
+        <a *ngIf="cutOff()" class="modal-close waves-effect waves-green btn-flat" (click) = "orderPlaced(foodItem)">Yes</a>
+   
+      <a *ngIf="cutOff()" class="modal-close waves-effect waves-green btn-flat">No</a>
+      <a *ngIf="!cutOff()" class="modal-close waves-effect waves-green btn-flat">ok</a>
+    </div>
+  </div>
+
+
+  

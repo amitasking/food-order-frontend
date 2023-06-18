@@ -2,3 +2,33 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.btn-floating {
+    background-color: rgb(248,192,17) !important;
+}
+
+/* .active {
+    color: white !important;
+    font-weight: 500;
+} */
+.tabs .tab a .active {
+    color: rgb(248,192,17) !important;
+    font-weight: 550 !important;
+    
+    
+}
+
+.tabs .tab a  {
+    /* color: red !important; */
+    
+}
+
+.tabs :hover {
+    background-color: white !important;
+    font-weight: 600;
+    
+}
+
+
+.card {
+    
+  }

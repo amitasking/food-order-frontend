@@ -6,21 +6,25 @@ import { EventEmitter,Output} from '@angular/core';
   providedIn: 'root'
 })
 export class FoodMenuService {
+    url = "http://34.207.252.127:3000"
+  
   @Output() daySelectedEvent : EventEmitter<any> = new EventEmitter<any>();
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient) { 
+   this.url = "http://localhost:3000"
+  }
 
   getFoodItemsAccordingToType(type : any){
     // https://r8mm4pjf3g.execute-api.us-east-1.amazonaws.com/dev/
-    return this.http.get<FoodItem[]>("http://107.21.181.246:3000/fooditem?type="+type)
+    return this.http.get<FoodItem[]>(this.url+"/fooditem?type="+type)
   }
 
   getFoodItemsAccordingToTypeandDay(type : string,day:Number){
     // https://r8mm4pjf3g.execute-api.us-east-1.amazonaws.com/dev/
-    return this.http.get<FoodItem[]>("http://107.21.181.246:3000/fooditem?type="+type+"&day="+day)
+    return this.http.get<FoodItem[]>(this.url+"/fooditem?type="+type+"&day="+day)
   }
 
   getAllFoodItems(){
-    return this.http.get<FoodItem[]>("http://107.21.181.246:3000/fooditem");
+    return this.http.get<FoodItem[]>(this.url+"/fooditem?all=true");
   }
 
 
