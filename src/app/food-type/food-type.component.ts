@@ -48,7 +48,7 @@ timeover = false;
   displayErrorImage(res :any){
        //  console.log("Current time is before 10 AM.");
        this.notFound = false;
-       this.timeover = false;
+  
     if(!res || res.length == 0){
       this.notFound = true;
     }

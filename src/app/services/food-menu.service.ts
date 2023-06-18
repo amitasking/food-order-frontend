@@ -6,11 +6,11 @@ import { EventEmitter,Output} from '@angular/core';
   providedIn: 'root'
 })
 export class FoodMenuService {
-    url = "http://34.207.252.127:3000"
+    url = "http://50.16.158.237:3000"
   
   @Output() daySelectedEvent : EventEmitter<any> = new EventEmitter<any>();
   constructor(private http : HttpClient) { 
-   this.url = "http://localhost:3000"
+  //s this.url = "http://localhost:3000"
   }
 
   getFoodItemsAccordingToType(type : any){

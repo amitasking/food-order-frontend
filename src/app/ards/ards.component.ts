@@ -4,6 +4,7 @@ import { OrderService } from '../services/order.service';
 import { Order } from '../models/order.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '../services/auth.service';
 declare var M: any;
 @Component({
   selector: 'app-ards',
@@ -25,7 +26,7 @@ export class ArdsComponent implements OnInit {
   @Input()
   foodItem: FoodItem = new FoodItem;
   date: Date = new Date();
-  constructor(private dialog: MatDialog, private orderService: OrderService, private router: Router, private route: ActivatedRoute) {
+  constructor(private auth : AuthService, private dialog: MatDialog, private orderService: OrderService, private router: Router, private route: ActivatedRoute) {
 
   }
 
@@ -46,7 +47,7 @@ export class ArdsComponent implements OnInit {
     const currentDateTime = new Date();
     const currentHour = currentDateTime.getHours();
     const currentMinutes = currentDateTime.getMinutes();
-    if (this.selectedFoodItem.servedOn == new Date().getDay()) {
+    if (this.selectedFoodItem && this.selectedFoodItem.servedOn == new Date().getDay()) {
       if (this.selectedFoodItem.menuType == 'lunch' && (currentHour < 10 || (currentHour === 10 && currentMinutes === 0)))
         return true;
       if (this.selectedFoodItem.menuType == 'dinner' && (currentHour < 16 || (currentHour === 16 && currentMinutes === 0)))
@@ -59,19 +60,22 @@ export class ArdsComponent implements OnInit {
 
   orderPlaced(fooditem: FoodItem) {
     // alert('dsd')
-    const userdata = localStorage.getItem('CognitoIdentityServiceProvider.j6g1josveiic95p1jd8f5hs2j.f117a7ce-a582-4606-8076-aff4be56eae8.userData')
-    console.log(userdata);
-
-    if (!userdata) return
-    const username = JSON.parse(userdata).Username
-    console.log(username);
-    let order;
-    order = new Order(username, fooditem.type, fooditem.id);
-    this.orderService.saveOrder(order).subscribe(res => {
-      console.log(res);
-      // this.router.navigate(['order/1'])
-      M.toast({ html: `Thanks!, We have received your order for ${fooditem.name}` })
+    let user = '';
+     this.auth.getLoggedInUser().then(data => {
+      user = data.username
+      let order;
+      order = new Order(user, fooditem.type, fooditem.id);
+      this.orderService.saveOrder(order).subscribe(res => {
+        console.log(res);
+        // this.router.navigate(['order/1'])
+        M.toast({ html: `Thanks! We have received your order for ${fooditem.name}` })
+      })
     })
+  
+  
+    
+  
+
     //,err => {}, () => {
 
     // })
