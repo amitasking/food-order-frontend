@@ -1,110 +1,77 @@
-<div class="row">
-      <div class="">
-         <!-- <div style="color: red; " class="fixed-action-btn">
-            <a class="btn-floating">
-            <i (click)="picker.open()" class="large material-icons">date_range</i>
-            </a>
-         </div> -->
-         <div class="row">
-            <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
-               <li style="" class="tab"><a [ngClass]="{'active': type=='lunch'}"
-                  (click)="typeSelected('lunch')">Lunch</a>
-               </li>
-               <li class="tab"><a [ngClass]="{'active': type=='dinner'}" (click)="typeSelected('dinner')">Dinner</a>
-               </li>
-            </ul>
-            <div class="row">
-               <div class="col 4">
-                  <div class="row">
-                     <!-- <div class="col s12 days">
-                        <div style="" class="card">
-                          <div style="padding: ;" class="card-content">
-                            <span class="card-title">Choose Days</span>
-                           <ul>
-                            <li>
-                                  <a href="">Monday</a>
-                            </li>
-                            <li>
-                                  <a href="">Tuesday</a>
-                            </li>
-                            <li>
-                                  <a href="">Wednesday</a>
-                            </li>
-                            <li>
-                                  <a href="">Thursday</a>
-                            </li>
-                            <li>
-                                  <a href="">Friday</a>
-                            </li>
-                            <li>
-                                  <a href="">Saturday</a>
-                            </li>
-                            <li>
-                                  <a href="">Sunday</a>
-                            </li>
-                           </ul>
-                           
-                          </div>
-                          <!-- <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a> -->
-                     <!-- Dropdown Structure -->
-                     <!-- <div class="card-action">
-                        <a href="#">This is a link</a>
-                        <a href="#">This is a link</a>
-                        </div> -->
+<div style="margin-top: 20%;" class="row">
+   <div class="">
+      <div class="row container">
+         <!-- <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+            <li style="" class="tab"><a [ngClass]="{'active': type=='lunch'}" (click)="typeSelected('lunch')">Lunch</a>
+            </li>
+            <li class="tab"><a [ngClass]="{'active': type=='dinner'}" (click)="typeSelected('dinner')">Dinner</a>
+            </li>
+         </ul> -->
+         <div class="col s4">
+            <button [ngClass]="{'active_button': type=='lunch','type':type!='lunch'}" #btn (click)="typeSelected('lunch',btn)" class="">
+               <span [ngClass]="{'active_type_text': type=='lunch','type_text':type!='lunch'}" class="">lunch</span>
+            </button>
+            
+         </div>
+         <div class="col s4">
+            <button [ngClass]="{'active_type': type=='dinner','type':type!='dinner'}" #btn2  (click)="typeSelected('dinner',btn2)" class="active_button">
+               <span [ngClass]="{'active_type_text': type=='dinner','type_text':type!='dinner'}" class="type_text">Dinner</span>
+            </button>
+         </div>
+      </div>
+  
+      <div class="row col s12 container">
+         <!-- <span class="day">
+            {{dayMap.get(day)}}
+
+         </span> -->
+         <div class="">
+            <div style="margin-left: 30px;" class="">
+               <a (click)="daySelected(1,chip)">
+                  <div [ngClass]="{'selected': day=='1'}" #chip style="" class="chip">
+                     Mon
                   </div>
-               </div>
+               </a>
+               <a (click)="daySelected(2,chip2)">
+                  <div [ngClass]="{'selected': day=='2'}" #chip2 style="" class="chip">
+                     Tue
+                  </div>
+               </a>
+               <a (click)="daySelected(3,chip3)">
+                  <div [ngClass]="{'selected': day=='3'}" #chip3 style="" class="chip">
+                     Wed
+                  </div>
+               </a>
+               <a (click)="daySelected(4,chip4)">
+                  <div [ngClass]="{'selected': day=='4'}" #chip4 style="" class="chip">
+                     Thu
+                  </div>
+               </a>
+               <a (click)="daySelected(5,chip5)">
+                  <div [ngClass]="{'selected': day=='5'}" #chip5 style="" class="chip">
+                     Fri
+                  </div>
+               </a>
+               <a (click)="daySelected(6,chip6)">
+                  <div [ngClass]="{'selected': day=='6'}" #chip6 style="" class="chip">
+                     Sat
+                  </div>
+               </a>
+               <a (click)="daySelected(0,chip7)">
+                  <div [ngClass]="{'selected': day=='0'}" #chip7 style="" class="chip">
+                     Sun
+                  </div>
+               </a>
             </div>
          </div>
-         <div class="col s12 container">
-            <div class="">
-               <div  style="margin-left: 40px;" class="">
-                  <a  (click) = "daySelected(1,chip)">
-                     <div [ngClass]="{'selected': day=='1'}" #chip style="" class="chip">
-                        Mon
-                     </div>
-                  </a>
-                  <a (click) = "daySelected(2,chip2)">
-                     <div [ngClass]="{'selected': day=='2'}" #chip2 style="" class="chip">
-                        Tue
-                     </div>
-                  </a>
-                  <a (click) = "daySelected(3,chip3)">
-                     <div [ngClass]="{'selected': day=='3'}" #chip3 style="" class="chip">
-                        Wed
-                     </div>
-                  </a>
-                  <a (click) = "daySelected(4,chip4)">
-                     <div [ngClass]="{'selected': day=='4'}" #chip4 style="" class="chip">
-                        Thu
-                     </div>
-                  </a>
-                  <a (click) = "daySelected(5,chip5)">
-                     <div [ngClass]="{'selected': day=='5'}" #chip5 style="" class="chip">
-                        Fri
-                     </div>
-                  </a>
-                  <a (click) = "daySelected(6,chip6)">
-                     <div [ngClass]="{'selected': day=='6'}" #chip6 style="" class="chip">
-                        Sat
-                     </div>
-                  </a>
-                  <a (click) = "daySelected(0,chip7)">
-                     <div [ngClass]="{'selected': day=='0'}" #chip7 style="" class="chip">
-                        Sun
-                     </div>
-                  </a>
+         <div id="test1" class="col s12">
+            <div style="text-align: center;" _ngcontent-tcm-c57="" class="card">
+               <div *ngIf="notFound" class="col m4 s12">
+                  <img style="width: 100%; height: 100%;" src="../../assets/notfound.webp" alt="">
+                  <h2>NO ITEM FOUND</h2>
+                  <p>Try to search for different day!</p>
                </div>
-            </div>
-            <div id="test1" class="col s12">
-               <div style="text-align: center;" _ngcontent-tcm-c57="" class="card">
-                  <div *ngIf="notFound" class="col m4 s12">
-                     <img style="width: 100%; height: 100%;"
-                           src="../../assets/notfound.webp"
-                           alt="">
-                     <h2>NO ITEM FOUND</h2>
-                     <p>Try to search for different day!</p>
-                     </div>
-                  <!-- <div *ngIf="timeover" class="col m4 s12">
+               <!-- <div *ngIf="timeover" class="col m4 s12">
                      <img style="width: 100%; height: 44vh;"
                         src="../../assets/timeover.avif"
                         alt="">
@@ -112,18 +79,20 @@
                      <p *ngIf = "type=='lunch'"> You Have To Place Lunch Order Before 10 AM!</p>
                      <p *ngIf = "type=='dinner'"> You Have To Place Dinner Order Before 4 PM!</p>
                   </div> -->
-                  <div>
-
-                     <div  class="col m4 s12" *ngFor="let foodItem of foodItems">
+               <div>
+                     
+                  <div style="margin-top: 10px !important;" class="col m4 s12" *ngFor="let foodItem of foodItems">
+                     <a (click)= "openOrderDetail(foodItem)">
                         <app-ards [foodItem]='foodItem'></app-ards>
-                     </div>
+                     </a>
                   </div>
                </div>
             </div>
          </div>
       </div>
    </div>
-   <mat-form-field style="visibility: hidden;;" class="example-full-width">
-      <input (dateChange)="onDateSelect($event)" matInput [matDatepicker]="picker">
-      <mat-datepicker #picker></mat-datepicker>
-   </mat-form-field>
+</div>
+<mat-form-field style="visibility: hidden;;" class="example-full-width">
+   <input (dateChange)="onDateSelect($event)" matInput [matDatepicker]="picker">
+   <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

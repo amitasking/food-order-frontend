@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { OrderService } from '../services/order.service';
 declare var M: any;
 
 @Component({
@@ -26,7 +27,7 @@ export class FoodTypeComponent implements OnInit {
   type: any = ""
   day : any = ""
   notFound = false;
-  constructor(private _bottomSheet: MatBottomSheet, private router: Router, private route: ActivatedRoute, private foodMenuService: FoodMenuService) { 
+  constructor(private orderService : OrderService, private _bottomSheet: MatBottomSheet, private router: Router, private route: ActivatedRoute, private foodMenuService: FoodMenuService) { 
     const modalElement = document.getElementById('myModal');
     M.Modal.init(modalElement);
   }
@@ -75,8 +76,11 @@ timeover = false;
       M.Modal.init(modalElement);
       const queryParam1 = params.get('type');
       this.type = queryParam1
+     // this.type = queryParam1
+     // alert(this.type)
       if (!queryParam1) {
         this.type = 'lunch'
+        
         this.router.navigate([''], { queryParams: { type: 'lunch' } });
       }
       // Perform actions based on query parameter values
@@ -92,7 +96,23 @@ timeover = false;
   };
 
 
-  typeSelected(foodType: string) {
+  typeSelected(foodType: string, btn : HTMLElement) {
+    // if(btn.classList.contains('type')){
+    //   btn.classList.remove('type');
+    //   btn.classList.remove('type_text')
+    //   btn.classList.add('active_type')
+    //   btn.classList.add('active_type_text')      
+    // }
+    // else {
+    //   btn.classList.remove('active_type');
+    //   btn.classList.remove('active_type_text')
+    //   btn.classList.add('type')
+    //   btn.classList.add('type_text')      
+      
+    // }
+
+
+
     this.router.navigate([''], { queryParams: { type: foodType } });
   }
   // onDateSelected(event: any) {
@@ -146,7 +166,11 @@ timeover = false;
       this.foodItems = res
     })
   }
+  openOrderDetail(foodItem : any){
+    this.orderService.openOrderDetail.emit(foodItem);
+    this.router.navigate(['food-detail',foodItem.id]);
 
+  }
 
 }
 

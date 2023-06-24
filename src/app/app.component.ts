@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FoodMenuService } from './services/food-menu.service';
 import { FoodItem } from './models/FoodItem.model';
 import {HttpClient} from '@angular/common/http'
+import { UtilService } from './services/util.service';
+import { ActivatedRoute } from '@angular/router';
 
 declare var M: any;
+declare var window: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -131,12 +134,15 @@ export class AppComponent  implements OnInit  {
     }
 ]
   foodType : String = ''
-  constructor(private foodmenuService : FoodMenuService, private http : HttpClient){
+  constructor(private route : ActivatedRoute, private http : HttpClient){
    
   }
-  
+  showLogo = true
+  sideBarState = false;
   ngOnInit(): void {
-  
+    // this.route.params.subscribe((params) => {
+    //  alert(0)
+    // });
     const modalElement = document.getElementById('myModal');
     M.Modal.init(modalElement);
   }
@@ -148,10 +154,12 @@ export class AppComponent  implements OnInit  {
 
   automate(){
     this.arr.forEach(item => {
-      this.http.post('http://50.16.158.237:3000/fooditem',item).subscribe(res => {
+      this.http.post('http://localhost:3000/fooditem',item).subscribe(res => {
 
       })
     })
   }
+
+
 
 }

@@ -35,6 +35,7 @@ import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
+import { FoodDetailComponent } from './food-detail/food-detail.component';
 // import { DatepickerModule } from 'ng2-datepicker';
 // import {AngularFireModule} from '@angular/fire/compat';
 // import {AngularFireAuthModule} from '@angular/fire/compat/auth';
@@ -67,6 +68,7 @@ import {MatChipsModule} from '@angular/material/chips';
     OrderplacedComponent,
     FooditemsComponent,
     BottomSheetComponent,
+    FoodDetailComponent,
    // QrCodeGenratorComponent
   ],
   imports: [

@@ -1,0 +1,67 @@
+<div class="">
+    <div class="col s12">
+        <img style="border-bottom-right-radius: 80px; border-bottom-left-radius: 80px;height: 40vh; width: 100%;" [src]='foodItem.image' alt="" srcset="">
+    </div>
+    <!-- <div style="text-align: center;">
+        <div class = "discount" style=" ">
+            <p style="">50% OFF</p>
+        </div>
+    </div> -->
+
+<div style="text-align: center;">
+    <button disabled class="discount">
+        50% OFF
+    </button>
+</div>
+    <!-- <div class = "container" class="row col s5">
+       <p class="heading">Dal Fry</p>
+    </div> -->
+    <div class=" row container">
+        <div class="col s11">
+            <p class="heading">{{foodItem.name}}</p>
+            <p>  <i style="font-size: 15px;" class="material-icons yellow-text">star</i>
+                <span style="font-size: 15px;"> 4.6</span>
+            </p>
+           <span class="desc">
+               {{foodItem.description}}
+           </span>
+
+        </div>
+    </div>
+
+    <div class="row container">
+        <div  class="col s3">
+            <div style="text-align: center; border-radius: 20px; height: 60px; " class="s">
+                <span class="nut_info">50 gm</span>
+                <span class="nut" style="margin-: 60px !important;">Carbs</span>
+            </div>
+        </div>
+        <div  class="col s3">
+            <div style="text-align: center; border-radius: 20px; height: 60px; " class="s">
+                <span class="nut_info">15 gm</span>
+                <span class="nut" style="margin-: 60px !important;">Protein</span>
+            </div>
+        </div>
+        <div  class="col s3">
+            <div style="text-align: center; border-radius: 20px; height: 60px; " class="s">
+                <span class="nut_info">10 gm</span>
+                <span class="nut" style="margin-: 60px !important;">Fats</span>
+            </div>
+        </div>
+        <div  class="col s3">
+            <div style="text-align: center; border-radius: 20px; height: 60px; " class="s">
+                <span class="nut_info">10 gm</span>
+                <span class="nut" style="margin-: 60px !important;">Sugar</span>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div class="row"></div>
+<div class="row">
+
+    <div style="text-align: center;" class="col s12">
+
+        <button (click) = orderPlaced() class="order_button"><span class="order_text">PLACE ORDER</span></button>
+    </div>
+</div>

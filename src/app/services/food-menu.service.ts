@@ -10,7 +10,7 @@ export class FoodMenuService {
   
   @Output() daySelectedEvent : EventEmitter<any> = new EventEmitter<any>();
   constructor(private http : HttpClient) { 
-  //s this.url = "http://localhost:3000"
+   this.url = "http://localhost:3000"
   }
 
   getFoodItemsAccordingToType(type : any){
@@ -22,6 +22,11 @@ export class FoodMenuService {
     // https://r8mm4pjf3g.execute-api.us-east-1.amazonaws.com/dev/
     return this.http.get<FoodItem[]>(this.url+"/fooditem?type="+type+"&day="+day)
   }
+
+  getFoodItemByid(id:any){
+    return this.http.get<FoodItem[]>(this.url+`/fooditem?id=${id}`);
+  }
+
 
   getAllFoodItems(){
     return this.http.get<FoodItem[]>(this.url+"/fooditem?all=true");

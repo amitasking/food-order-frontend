@@ -5,7 +5,7 @@ import { Order } from '../models/order.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../services/auth.service';
-declare var M: any;
+
 @Component({
   selector: 'app-ards',
   templateUrl: './ards.component.html',
@@ -33,45 +33,24 @@ export class ArdsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const modalElement = document.getElementById('myModal');
-    M.Modal.init(modalElement);
-
-    this.route.queryParamMap.subscribe(rex => {
-      const modalElement = document.getElementById('myModal');
-      M.Modal.init(modalElement);
-
-    })
+   
   }
 
-  cutOff() {
-    const currentDateTime = new Date();
-    const currentHour = currentDateTime.getHours();
-    const currentMinutes = currentDateTime.getMinutes();
-    if (this.selectedFoodItem && this.selectedFoodItem.servedOn == new Date().getDay()) {
-      if (this.selectedFoodItem.menuType == 'lunch' && (currentHour < 10 || (currentHour === 10 && currentMinutes === 0)))
-        return true;
-      if (this.selectedFoodItem.menuType == 'dinner' && (currentHour < 16 || (currentHour === 16 && currentMinutes === 0)))
-        return true;
-      return false;
-    }
+  // cutOff() {
+  //   const currentDateTime = new Date();
+  //   const currentHour = currentDateTime.getHours();
+  //   const currentMinutes = currentDateTime.getMinutes();
+  //   if (this.selectedFoodItem && this.selectedFoodItem.servedOn == new Date().getDay()) {
+  //     if (this.selectedFoodItem.menuType == 'lunch' && (currentHour < 10 || (currentHour === 10 && currentMinutes === 0)))
+  //       return true;
+  //     if (this.selectedFoodItem.menuType == 'dinner' && (currentHour < 16 || (currentHour === 16 && currentMinutes === 0)))
+  //       return true;
+  //     return false;
+  //   }
 
-    return true;
-  }
+  //   return true;
+  // }
 
-  orderPlaced(fooditem: FoodItem) {
-    // alert('dsd')
-    let user = '';
-     this.auth.getLoggedInUser().then(data => {
-      user = data.username
-      let order;
-      order = new Order(user, fooditem.type, fooditem.id);
-      this.orderService.saveOrder(order).subscribe(res => {
-        console.log(res);
-        // this.router.navigate(['order/1'])
-        M.toast({ html: `Thanks! We have received your order for ${fooditem.name}` })
-      })
-    })
-  
   
     
   
@@ -81,14 +60,14 @@ export class ArdsComponent implements OnInit {
     // })
   }
 
-  day: any = ""
-  selectedFoodItem: any
-  openModal(foodItem: any) {
-    this.selectedFoodItem = foodItem
-    this.day = this.dayMap.get(foodItem.servedOn)
-    const modalElement = document.getElementById('myModal');
-    M.Modal.init(modalElement);
-    var instance = M.Modal.getInstance(modalElement);
-    instance.open()
-  }
-}
+  // day: any = ""
+  // selectedFoodItem: any
+  // openModal(foodItem: any) {
+  //   this.selectedFoodItem = foodItem
+  //   this.day = this.dayMap.get(foodItem.servedOn)
+  //   const modalElement = document.getElementById('myModal');
+  //   M.Modal.init(modalElement);
+  //   var instance = M.Modal.getInstance(modalElement);
+  //   instance.open()
+  // }
+

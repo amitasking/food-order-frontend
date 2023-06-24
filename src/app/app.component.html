@@ -1,79 +1,58 @@
 <div>
    <amplify-authenticator style="margin-top: 20%;">
-   <ng-template
-     amplifySlot="authenticated"
-     let-user="user"
-     let-signOut="signOut"
-   >
-     
-<div class="row">
-   <div  class="">
-      <div class="col s3">
-       
+      <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
          <!-- <a (click)="signOut()" style = "color: black !important;" class="btn-floating btn-large   "   style=" top : 10px;" ><i class="material-icons">exit_to_app</i></a> -->
-    <a   (click)="drawer.toggle()" style = "color: black !important;" class="btn-floating btn-large   "   style=" top : 10px;" ><i class="material-icons">menu</i></a>
-  
-   </div>
-   <div style="margin-top: 25px;" class="col s6">
+        <div class = "overlay-button">
+           <a class="overlay" (click)="drawer.toggle(); sideBarState = !sideBarState">
+              <i *ngIf = "!sideBarState"
+                class="material-icons">menu
+              </i>
+              <i *ngIf = "sideBarState"
+              class="material-icons">close
+            </i>
+           </a>
+              
 
-         <h2 style="text-align: center;color:black"> <i class="material-icons">restaurant_menu</i> MENU </h2>
-   </div>
-   <div class="col s3">
-      <img style="height:70px; width: 70px;" src="../../assets/—Pngtree—food logo vector design restaurant_3628304.png" alt="">
-   </div>
-      <!-- <img style="height:70px; width: 70px;" src="../../assets/—Pngtree—food logo vector design restaurant_3628304.png" alt=""> -->
-      <!-- <img style="height:110px; width: 110px; position: absolute;  right: 0%; top:0%" src="../../assets/—Pngtree—food logo vector design restaurant_3628304.png" alt=""> -->
-      <!-- <button  (click)="signOut()">Sign Out</button> -->
-      <!-- <a style = "color: black !important;" class="btn-floating btn-large   "  (click)="signOut()" style=" position: absolute;  right: 2%; top : 35px;" ><i class="material-icons">exit_to_app</i></a> -->
-      <!-- <button class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></button> -->
-      
-   </div>
-   <div style="width: 100%;" class="row">
-      <div class="col s12">
-        
-          <!-- <div *ngIf = "foodTypeSelected && foodItems" class="row">
-           <div class="col m4 s12" *ngFor = "let foodItem of foodItems">
-               <app-ards [foodItem] = 'foodItem'></app-ards>
-           </div>
-          </div>
-         <app-food-type *ngIf = "!foodTypeSelected" (foodTypeSelected) = "foodTypeSelectedEvent($event)"></app-food-type> -->
-       
-      </div>
-   </div>
+        </div>
+         <!-- <router-outlet></router-outlet>  -->
+         <mat-drawer-container style="height: 100%;" class="example-container" autosize>
+            <mat-drawer  #drawer class="example-sidenav" mode="side">
+               <div class="nav-cnt" style="margin-top: 50px !important;">
+                  <ul id="" class="sidebar">
+                     <li><a routerLink="" class="waves-effect">Menu</a></li>
+                     <li><a style="" routerLink="myorders" class="waves-effect">My Orders</a></li>
+                     <li><a routerLink="myorders" class="waves-effect" (click)="signOut()">Sign Out</a></li>
+                  </ul>
+
+               </div>
+               <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p> -->
+               <!-- <button (click)="showFiller = !showFiller" mat-raised-button>
+                  Toggle extra text
+                  </button> -->
+            </mat-drawer>
+            <mat-drawer mode="side">Drawer content</mat-drawer>
+            <mat-drawer-content style="background-color: #F6F6F6 !important;"
+               (click)="drawer.close();sideBarState = false">
+               <!-- <div *ngIf = "showLogo" class="row">
+                  <div class="">
+                     <div class="col s3">
+                     </div>
+                     <div style="margin-top: px;" class="col s6">
+                        <h2 style="text-align: center;color:black"> <i class="material-icons">restaurant_menu</i> MENU </h2>
+                     </div>
+                     <div class="col s3">
+                        <img style="height:70px; width: 70px;"
+                           src="../../assets/—Pngtree—food logo vector design restaurant_3628304.png" alt="">
+                     </div>
+                  </div>
+               </div> -->
+              <div class="mn_content">
+               <router-outlet></router-outlet>
+              </div>
+            </mat-drawer-content>
+            <!-- <mat-drawer-content>Main content</mat-drawer-content> -->
+         </mat-drawer-container>
+      </ng-template>
+   </amplify-authenticator>
 </div>
-<!-- <router-outlet></router-outlet>  -->
-<mat-drawer-container style="height: 100%;" class="example-container" autosize>
-   <mat-drawer #drawer class="example-sidenav" mode="side">
-     
-  <ul id="slide-" class="sidebar">
-   <li><a routerLink="" class="waves-effect">Menu</a></li>
-   <li><a routerLink="myorders" class="waves-effect" >My Orders</a></li>
-   <li><a routerLink="myorders" class="waves-effect" (click)="signOut()">Sign Out</a></li>
- </ul>
-  
-     <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p> -->
-     <!-- <button (click)="showFiller = !showFiller" mat-raised-button>
-       Toggle extra text
-     </button> -->
-   </mat-drawer>
-
-
- 
-   <div class="example-sidenav-content">
- 
-   </div>
-   <mat-drawer mode="side" >Drawer content</mat-drawer>
-   <mat-drawer-content (click)="drawer.close()"><router-outlet></router-outlet></mat-drawer-content>
-   <!-- <mat-drawer-content>Main content</mat-drawer-content> -->
-</mat-drawer-container>
-   </ng-template>
- </amplify-authenticator>
-</div>
-
-<!-- <button (click) = "automate()">automate</button> -->
-
-<!-- 
-  -->    
-  <!-- <button type="button" mat-button (click)="drawer.toggle()">
-       Toggle sidenav
-     </button> -->
+<!-- <button (click)="automate()">automate</button> -->
