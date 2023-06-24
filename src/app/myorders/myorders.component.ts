@@ -8,6 +8,7 @@ import { OrderService } from '../services/order.service';
   styleUrls: ['./myorders.component.css']
 })
 export class MyordersComponent implements OnInit {
+  progress = true;
   dayMap = new Map(
     [
       [0, "Sunday"],
@@ -29,6 +30,11 @@ export class MyordersComponent implements OnInit {
       this.order.getMyOrders(username).subscribe(res => {
         console.log(res);
         this.myorders = res;
+      },err => {
+        this.progress = false;
+      },() => {
+        this.progress = false
+
       })
     })
   }

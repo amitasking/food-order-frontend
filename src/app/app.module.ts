@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NotifierModule } from 'angular-notifier';
@@ -48,10 +49,11 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
 //   appId: "1:136956368854:web:9d392e8c8c51f95b353677",
 //   measurementId: "G-GN7LP96799"
 // };
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     OrderComponentComponent,
     AdminComponent,
@@ -72,8 +74,10 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
    // QrCodeGenratorComponent
   ],
   imports: [
+    MatFormFieldModule,
     BrowserModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
     MatChipsModule,
     MatButtonModule,
     MatBottomSheetModule,
@@ -111,7 +115,9 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
     // FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

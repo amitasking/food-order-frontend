@@ -39,6 +39,9 @@ const routes: Routes = [
   },
   {
     component : FoodDetailComponent, path:'food-detail/:id'
+  },
+  {
+    component : AdminComponent, path : 'admin'
   }
 ];
 

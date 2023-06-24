@@ -10,7 +10,7 @@ export class FoodMenuService {
   
   @Output() daySelectedEvent : EventEmitter<any> = new EventEmitter<any>();
   constructor(private http : HttpClient) { 
-   this.url = "http://localhost:3000"
+   this.url = "http://localhost:4000"
   }
 
   getFoodItemsAccordingToType(type : any){
@@ -31,6 +31,9 @@ export class FoodMenuService {
   getAllFoodItems(){
     return this.http.get<FoodItem[]>(this.url+"/fooditem?all=true");
   }
+  
+  addfooditem(foodItem : FoodItem){
 
+  }
 
 }

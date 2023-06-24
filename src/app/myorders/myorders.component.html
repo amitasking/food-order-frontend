@@ -1,18 +1,25 @@
-
-<div style="height: 100vh;" class="row ">
-  
+<div style="height: 100vh;">
+  <div style="margin-top: 12%">
+    <h2 style="text-align: center; font-family: Poppins; font-weight: 600;">My Orders</h2>
+  </div>
+  <div  *ngIf="progress" style="text-align: center !important; margin-left: 34%; margin-top: 30%;" >
+    <mat-spinner ></mat-spinner>
+  </div>
+  <div *ngIf="!progress && myorders && myorders.length > 0" style="height: 100vh;" class="row ">
     <div class="col s12 ">
-        <!-- <h2 style="text-align: center;">My Orders </h2> -->
-  <ul class="collection">
-    <li *ngFor = "let order of myorders" class="collection-item avatar">
-      <img [src]="order.FoodItem.image" alt="" class="circle">
-      <span class="title">{{order.FoodItem.name}}</span>
-      <p>{{dayMap.get(order.FoodItem.servedOn)}} <br>
-      </p>
-    
-      
-    </li>
-   
-  </ul>
+      <ul class="collection">
+        <li *ngFor="let order of myorders" class="collection-item avatar">
+          <img *ngIf="order.FoodItem.image" [src]="order.FoodItem.image" alt="" class="circle">
+          <span class="title">{{order.FoodItem.name}}</span>
+          <p>{{dayMap.get(order.FoodItem.servedOn)}} <br>
+          </p>
+        </li>
+      </ul>
     </div>
- </div>
+  </div>
+
+  <div *ngIf="!progress && !(myorders && myorders.length > 0)" style="text-align: center; margin-top: 30%;" class="">
+    <img style="height: 150px; " src="../../assets/feather_search.png" alt="">
+    <p>You Have No orders!</p>
+  </div>
+</div>
