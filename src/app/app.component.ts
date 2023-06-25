@@ -4,6 +4,7 @@ import { FoodItem } from './models/FoodItem.model';
 import {HttpClient} from '@angular/common/http'
 import { UtilService } from './services/util.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 declare var M: any;
 declare var window: any;
@@ -134,12 +135,13 @@ export class AppComponent  implements OnInit  {
     }
 ]
   foodType : String = ''
-  constructor(private route : ActivatedRoute, private http : HttpClient){
+  constructor(private route : ActivatedRoute, private http : HttpClient,private auth : AuthService){
    
   }
   showLogo = true
   sideBarState = false;
   ngOnInit(): void {
+    this.auth.currentSession()
     // this.route.params.subscribe((params) => {
     //  alert(0)
     // });
