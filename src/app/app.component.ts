@@ -19,7 +19,8 @@ declare var window: any;
 })
 
 export class AppComponent implements OnInit {
-  vapidKey: string = "BJNhvkYyr_VbQLcTijnWZfQx7Vugk-0fUfHTZfBL00WzhlSuvs-4ow729tQeQp08MdX5u-FCSk7rxxPu7g2oaeI"
+  //vapidKey: string = "BJNhvkYyr_VbQLcTijnWZfQx7Vugk-0fUfHTZfBL00WzhlSuvs-4ow729tQeQp08MdX5u-FCSk7rxxPu7g2oaeI"
+  vapidKey : string = 'BFtdOyW-hjO8nFiCEBHmu8tS4vYkSQm0MfNy9KaeUTcWSmCyZqdI_M3l01YRlaYNof9gK9S16kPDsLr_Tr3YI9g'
   arr: any[] = [
     {
       "id": 1,
@@ -157,8 +158,6 @@ export class AppComponent implements OnInit {
 
     this.swPush.messages.subscribe(message => {
       console.log(message);
-      var notification = new Notification("Title", { body: 'HTML5 Web Notification API', icon: 'http://i.stack.imgur.com/Jzjhz.png?s=48&g=1', dir: 'auto' });
-
 
     })
 
@@ -192,11 +191,18 @@ export class AppComponent implements OnInit {
       .then(res => {
         console.log(res)
         const key = res.getKey("p256dh");
-        const auth = res.getKey("auth");
+        const auth = 2
         console.log("key " + key);
         console.log("auth " + auth);
+        console.log(JSON.stringify(res));
+        
+       
+       
+        this.not.addPushSubscriber(JSON.parse(JSON.stringify(res))).subscribe(rex => {
+          this.not.send().subscribe()
+     
 
-        this.not.addPushSubscriber(res, key, auth).subscribe()
+      });
       }
       )
       .catch(err => console.error("Could not subscribe to notifications", err));
