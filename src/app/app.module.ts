@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NotifierModule } from 'angular-notifier';
 import { AppRoutingModule } from './app-routing.module';
@@ -50,6 +50,8 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
 //   measurementId: "G-GN7LP96799"
 // };
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AuthInterceptor } from './auth.interceptor';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 
 @NgModule({
   declarations: [
@@ -113,10 +115,20 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     // AngularFireModule.initializeApp(firebaseConfig),
     // AngularFireAuthModule,
     // FirebaseUIModule.forRoot(firebaseUiAuthConfig),
-    
+    // provideFirebaseApp(() => initializeApp({
+    //   apiKey: "AIzaSyDikfwJ4XDWYHGU320P-angJ0w7_NyBuFM",
+    //   authDomain: "food-order-85e03.firebaseapp.com",
+    //   projectId: "food-order-85e03",
+    //   storageBucket: "food-order-85e03.appspot.com",
+    //   messagingSenderId: "840501030637",
+    //   appId: "1:840501030637:web:284c058def2507f2d626e4",
+    //   measurementId: "G-74GZPQJ3MM"
+    // })),
+  
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
