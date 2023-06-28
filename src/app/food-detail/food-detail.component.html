@@ -18,7 +18,7 @@
     </div> -->
     <div class=" row container">
         <div class="col s11">
-            <p class="heading">{{foodItem.name}}</p>
+            <p class="heading">{{foodItem.name | titlecase}}</p>
             <p>  <i style="font-size: 15px;" class="material-icons yellow-text">star</i>
                 <span style="font-size: 15px;"> 4.6</span>
             </p>
@@ -32,13 +32,13 @@
     <div class="row container">
         <div  class="col s3">
             <div style="text-align: center; border-radius: 20px; height: 60px; " class="s">
-                <span class="nut_info">50 gm</span>
+                <span class="nut_info">{{foodItem.carbs}}</span>
                 <span class="nut" style="margin-: 60px !important;">Carbs</span>
             </div>
         </div>
         <div  class="col s3">
             <div style="text-align: center; border-radius: 20px; height: 60px; " class="s">
-                <span class="nut_info">15 gm</span>
+                <span class="nut_info">{{foodItem.protein}}</span>
                 <span class="nut" style="margin-: 60px !important;">Protein</span>
             </div>
         </div>

@@ -142,18 +142,13 @@ export class AppComponent implements OnInit {
   ]
   foodType: String = ''
   constructor(private swPush: SwPush, private route: ActivatedRoute, private http: HttpClient, private auth: AuthService, private not: NotificationService) {
-    this.auth.currentSession().then((res: any) => {
-      //  alert("added fresh token")
-      let accessToken = res.getAccessToken()
-      localStorage.setItem("token", JSON.stringify(accessToken))
-      console.log(accessToken);
-
-    })
+   
 
   }
   showLogo = true
   sideBarState = false;
   ngOnInit(): void {
+  
     this.subscribe()
 
     this.swPush.messages.subscribe(message => {

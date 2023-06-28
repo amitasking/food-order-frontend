@@ -11,9 +11,9 @@ declare var M: any;
   styleUrls: ['./food-detail.component.css']
 })
 export class FoodDetailComponent implements OnInit {
-  foodItem : any
-  constructor(private auth : AuthService, private route : ActivatedRoute, private orderService : OrderService, private foodMenuService : FoodMenuService) { }
-  
+  foodItem: any
+  constructor(private auth: AuthService, private route: ActivatedRoute, private orderService: OrderService, private foodMenuService: FoodMenuService) { }
+
   ngOnInit(): void {
     const modalElement = document.getElementById('myModal');
     M.Modal.init(modalElement);
@@ -33,37 +33,23 @@ export class FoodDetailComponent implements OnInit {
 
 
   orderPlaced() {
-    if(!this.cutOff()){
-      M.toast({ html: `Sorry You cannot order food after cutoff time` })
-      return;
-    }
-    let user = '';
-     this.auth.getLoggedInUser().then(data => {
-      user = data.username
-      let order;
-      order = new Order(user, this.foodItem.type, this.foodItem.id);
-      this.orderService.saveOrder(order).subscribe(res => {
-        console.log(res);
-        // this.router.navigate(['order/1'])
-        M.toast({ html: `Thanks! We have received your order for ${this.foodItem.name}` })
-      })
-    })
-  }
-  
 
-  cutOff() {
-    const currentDateTime = new Date();
-    const currentHour = currentDateTime.getHours();
-    const currentMinutes = currentDateTime.getMinutes();
-    if (this.foodItem && this.foodItem.servedOn == new Date().getDay()) {
-      if (this.foodItem.menuType == 'lunch' && (currentHour < 10 || (currentHour === 10 && currentMinutes === 0)))
-        return true;
-      if (this.foodItem.menuType == 'dinner' && (currentHour < 16 || (currentHour === 16 && currentMinutes === 0)))
-        return true;
-      return false;
-    }
-    return true;
+    let user = '';
+
+
+    this.orderService.saveOrder({ foodItemId: this.foodItem.id }).subscribe(res => {
+      console.log(res);
+      // this.router.navigate(['order/1'])
+      M.toast({ html: `Thanks! We have received your order for ${this.foodItem.name}` })
+    }, (err) => {
+      console.log(err);
+      
+      M.toast({ html : err.error});
+
+    })
+
   }
+
 
 
 }

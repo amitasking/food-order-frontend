@@ -1,32 +1,32 @@
-<div style="margin-top: 20%;" class="row">
+<div style="margin-top: 23%;" class="row">
    <div class="">
-      <div class="row container">
+      <div style="" class="row container">
          <!-- <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
             <li style="" class="tab"><a [ngClass]="{'active': type=='lunch'}" (click)="typeSelected('lunch')">Lunch</a>
             </li>
             <li class="tab"><a [ngClass]="{'active': type=='dinner'}" (click)="typeSelected('dinner')">Dinner</a>
             </li>
          </ul> -->
-         <div class="col s4">
+         <div class="col s6">
             <button [ngClass]="{'active_button': type=='lunch','type':type!='lunch'}" #btn (click)="typeSelected('lunch',btn)" class="">
                <span [ngClass]="{'active_type_text': type=='lunch','type_text':type!='lunch'}" class="">lunch</span>
             </button>
             
          </div>
-         <div class="col s4">
+         <div class="col s6">
             <button [ngClass]="{'active_type': type=='dinner','type':type!='dinner'}" #btn2  (click)="typeSelected('dinner',btn2)" class="active_button">
                <span [ngClass]="{'active_type_text': type=='dinner','type_text':type!='dinner'}" class="type_text">Dinner</span>
             </button>
          </div>
       </div>
   
-      <div class="row col s12 container">
+      <div style="margin-top: 18px;" class="row col s12 container">
          <!-- <span class="day">
             {{dayMap.get(day)}}
 
          </span> -->
          <div class="">
-            <div style="margin-left: 30px;" class="">
+            <div style="margin-left: 0px;" class="">
                <a (click)="daySelected(1,chip)">
                   <div [ngClass]="{'selected': day=='1'}" #chip style="" class="chip">
                      Mon
@@ -81,7 +81,7 @@
                   </div> -->
                <div>
                      
-                  <div style="margin-top: 10px !important;" class="col m4 s12" *ngFor="let foodItem of foodItems">
+                  <div  class="col m4 s12" *ngFor="let foodItem of foodItems">
                      <a (click)= "openOrderDetail(foodItem)">
                         <app-ards [foodItem]='foodItem'></app-ards>
                      </a>

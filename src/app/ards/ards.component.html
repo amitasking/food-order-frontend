@@ -68,7 +68,7 @@
 </div> -->
 
 
-<div class="row food_item_list">
+<div style="" class="row food_item_list">
     <div class="col s12">
         <div class="row">
             <div style="" class="col s4">
@@ -78,9 +78,11 @@
                     class="new badge" data-badge-caption="30% OFF!"></span>
             </div>
             <div style="padding-top: 13px; padding-bottom: 10px;" class="col s5">
-                <p class="food_item_heading">{{foodItem.name}}</p>
-                <!-- <span class="food_item_desc">{{foodItem.description}}</span> -->
-                <!-- <span class="price">Rs 200</span> -->
+                <p class="food_item_heading">{{foodItem.name | titlecase}}</p>
+                <!-- <span class="food_item_desc">{{ (foodDes.length>10)? (foodDes | slice:0:40)+'...':(foodDes) }}</span> -->
+                <p class="price">  <i style="font-size: 15px;" class="material-icons yellow-text">star</i>
+                    <span style="font-size: 15px;"> 4.6</span>
+                </p>
             </div>
         </div>
     </div>

@@ -8,6 +8,8 @@ export const environment = {
     //   cognitouserPoolId: 'us-east-1_u9viWeJDj',
     //   userPoolWebClientId: 'r13qmnjtvsp02rboqqrfciqam',
     // },
+  domain : "http://localhost:4000",
+  notification_domain : "http://localhost:4000"
 
 };
 

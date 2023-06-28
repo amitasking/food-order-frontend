@@ -33,7 +33,6 @@ export class ArdsComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
   }
 
   // cutOff() {
