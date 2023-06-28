@@ -7,3 +7,19 @@ input {
 input:focus {
     border: none !important;
 }
+
+i {
+    font-size: 150px !important;
+    color: #FF7000;
+   
+}
+
+p {
+    font-family: Poppins;
+    font-weight: 550;
+}
+
+
+button {
+    width: 100%; height: 300px;
+}

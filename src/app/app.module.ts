@@ -52,7 +52,8 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AuthInterceptor } from './auth.interceptor';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-
+import { OrdersheetComponent } from './ordersheet/ordersheet.component';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     
@@ -73,9 +74,11 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
     FooditemsComponent,
     BottomSheetComponent,
     FoodDetailComponent,
+    OrdersheetComponent,
    // QrCodeGenratorComponent
   ],
   imports: [
+    MatSelectModule,
     MatFormFieldModule,
     BrowserModule,
     MatSidenavModule,

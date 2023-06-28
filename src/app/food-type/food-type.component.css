@@ -74,6 +74,8 @@ li:hover {
 .chip {
     background-color: white;
     color: #FF7000;
+    width: 55px;
+    font-family: Poppins;
 }
 
 .active_type {
@@ -182,4 +184,6 @@ button {
 
 a {
     cursor: pointer;
+    margin-left: 1%;
 }
+

@@ -10,6 +10,7 @@ import { FoodTypeComponent } from './food-type/food-type.component';
 import { ArdsComponent } from './ards/ards.component';
 import { FooditemsComponent } from './fooditems/fooditems.component';
 import { FoodDetailComponent } from './food-detail/food-detail.component';
+import { OrdersheetComponent } from './ordersheet/ordersheet.component';
 // import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
@@ -42,6 +43,9 @@ const routes: Routes = [
   },
   {
     component : AdminComponent, path : 'admin'
+  },
+  {
+    component : OrdersheetComponent, path : 'admin/ordersheet'
   }
 ];
 
