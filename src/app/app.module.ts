@@ -14,7 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {WebcamModule} from 'ngx-webcam';
+//import {WebcamModule} from 'ngx-webcam';
 // import { CamComponent } from './cam/cam.component';
 import { MyordersComponent } from './myorders/myorders.component';
 // import { SignUpComponent } from './sign-up/sign-up.component';
@@ -27,7 +27,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 // import { OrderplacedComponent } from './orderplaced/orderplaced.component';
 import { FooditemsComponent } from './fooditems/fooditems.component';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
+//import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -96,19 +96,19 @@ import {TextFieldModule} from '@angular/cdk/text-field';
     MatDatepickerModule,
      MatInputModule,
      MatDialogModule,
-    OwlDateTimeModule,
-    OwlNativeDateTimeModule,
+    // OwlDateTimeModule,
+    // OwlNativeDateTimeModule,
     BrowserModule,
     BrowserAnimationsModule,
     // DatepickerModule,
     AmplifyAuthenticatorModule,
     FormsModule,
-    WebcamModule,
+    // WebcamModule,
     MatToolbarModule,
     MatSidenavModule,
     HttpClientModule,
     // QRCodeModule,
-    NotifierModule,
+     NotifierModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
