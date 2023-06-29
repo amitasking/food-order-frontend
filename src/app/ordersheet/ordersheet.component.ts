@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http'; 
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-ordersheet',
   templateUrl: './ordersheet.component.html',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersheetComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
+  organizations : any = []
 
   ngOnInit(): void {
+     this.getOrganization()  
   }
+
+  getOrganization(){
+    this.http.get(environment.domain + '/organization').subscribe(res => {
+      this.organizations = res
+    })
+  }
+
 
 }

@@ -1,13 +1,6 @@
-select {
-    font-family: Poppins;
-}
 button {
     background-color: #FF7000;
     color: white;
     font-family: Poppins;
     font-weight: 550;
-}
-
-span {
-    font-size: 32px;
 }

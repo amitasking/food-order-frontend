@@ -9,6 +9,7 @@ import { AngularFireMessaging } from '@angular/fire/compat/messaging';
 import { take } from 'rxjs';
 import { SwPush } from '@angular/service-worker';
 import { NotificationService } from './service/notification.service';
+import { environment } from 'src/environments/environment';
 declare var M: any;
 declare var window: any;
 
@@ -20,7 +21,7 @@ declare var window: any;
 
 export class AppComponent implements OnInit {
   //vapidKey: string = "BJNhvkYyr_VbQLcTijnWZfQx7Vugk-0fUfHTZfBL00WzhlSuvs-4ow729tQeQp08MdX5u-FCSk7rxxPu7g2oaeI"
-  vapidKey : string = 'BFtdOyW-hjO8nFiCEBHmu8tS4vYkSQm0MfNy9KaeUTcWSmCyZqdI_M3l01YRlaYNof9gK9S16kPDsLr_Tr3YI9g'
+  vapidKey : string = environment.vapidKey
   arr: any[] = [
     {
       "id": 1,
@@ -194,7 +195,9 @@ export class AppComponent implements OnInit {
        
        
         this.not.addPushSubscriber(JSON.parse(JSON.stringify(res))).subscribe(rex => {
-          this.not.send().subscribe()
+          console.log(rex);
+          
+          // this.not.send().subscribe()
      
 
       });

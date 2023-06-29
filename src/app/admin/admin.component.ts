@@ -19,4 +19,8 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['admin','ordersheet'])
   }
 
+  notification(){
+    this.router.navigate(['admin','notification'])
+  }
+
 }

@@ -9,13 +9,13 @@ import { OrderComponentComponent } from './order-component/order-component.compo
 import { AdminComponent } from './admin/admin.component';
 import { UploadMenuComponent } from './upload-menu/upload-menu.component';
 import { RatingComponent } from './rating/rating.component';
-import { FeedbackComponent } from './feedback/feedback.component';
+// import { FeedbackComponent } from './feedback/feedback.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {WebcamModule} from 'ngx-webcam';
-import { CamComponent } from './cam/cam.component';
+// import { CamComponent } from './cam/cam.component';
 import { MyordersComponent } from './myorders/myorders.component';
 // import { SignUpComponent } from './sign-up/sign-up.component';
 // import { SignInComponent } from './sign-in/sign-in.component';
@@ -25,7 +25,7 @@ import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { FoodTypeComponent } from './food-type/food-type.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { OrderplacedComponent } from './orderplaced/orderplaced.component';
+// import { OrderplacedComponent } from './orderplaced/orderplaced.component';
 import { FooditemsComponent } from './fooditems/fooditems.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -54,6 +54,8 @@ import { AuthInterceptor } from './auth.interceptor';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { OrdersheetComponent } from './ordersheet/ordersheet.component';
 import {MatSelectModule} from '@angular/material/select';
+import { NotificationComponent } from './notification/notification.component';
+import {TextFieldModule} from '@angular/cdk/text-field';
 @NgModule({
   declarations: [
     
@@ -62,22 +64,24 @@ import {MatSelectModule} from '@angular/material/select';
     AdminComponent,
     UploadMenuComponent,
     RatingComponent,
-    FeedbackComponent,
+    // FeedbackComponent,
     SideNavComponent,
-    CamComponent,
+    // CamComponent,
     MyordersComponent,
     // SignUpComponent,
     // SignInComponent,
     ArdsComponent,
     FoodTypeComponent,
-    OrderplacedComponent,
+    //OrderplacedComponent,
     FooditemsComponent,
-    BottomSheetComponent,
+    // BottomSheetComponent,
     FoodDetailComponent,
     OrdersheetComponent,
+    NotificationComponent,
    // QrCodeGenratorComponent
   ],
   imports: [
+    TextFieldModule,
     MatSelectModule,
     MatFormFieldModule,
     BrowserModule,

@@ -13,7 +13,7 @@ export class OrderService {
     return this.http.post(environment.domain + '/order',order);
   }
 
-  getMyOrders(username : any){
-    return this.http.get(environment.domain + `/order?username=${username}`);
+  getMyOrders(){
+    return this.http.get(environment.domain + `/order`);
   }
 }

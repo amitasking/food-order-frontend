@@ -24,18 +24,14 @@ export class MyordersComponent implements OnInit {
   constructor(private auth : AuthService, private order : OrderService) { }
 
   ngOnInit(): void {
-    let username = ''
-    this.auth.getLoggedInUser().then((res:any) => {
-      username = res.username
-      this.order.getMyOrders(username).subscribe(res => {
-        console.log(res);
-        this.myorders = res;
-      },err => {
-        this.progress = false;
-      },() => {
-        this.progress = false
+    this.order.getMyOrders().subscribe(res => {
+      console.log(res);
+      this.myorders = res;
+    },err => {
+      this.progress = false;
+    },() => {
+      this.progress = false
 
-      })
     })
   }
 

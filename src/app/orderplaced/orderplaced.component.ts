@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
 
-@Component({
-  selector: 'app-orderplaced',
-  templateUrl: './orderplaced.component.html',
-  styleUrls: ['./orderplaced.component.css']
-})
-export class OrderplacedComponent implements OnInit {
+// @Component({
+//   selector: 'app-orderplaced',
+//   templateUrl: './orderplaced.component.html',
+//   styleUrls: ['./orderplaced.component.css']
+// })
+// export class OrderplacedComponent implements OnInit {
 
-  constructor() { }
+//   constructor() { }
 
-  ngOnInit(): void {
-  }
+//   ngOnInit(): void {
+//   }
 
-}
+// }
