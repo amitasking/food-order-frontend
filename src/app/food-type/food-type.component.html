@@ -1,4 +1,4 @@
-<div style="margin-top: 23%;" class="row">
+<div style="margin-top: 23%; height: 100vh;" class="row">
    <div class="">
       <!-- <div class="row">
          <div class="container">
@@ -20,28 +20,31 @@
       </div> -->
 
       <div style="margin-top: 18px;" class="row  container">
-      <div style="" class="row container">
-         <!-- <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+         <div style="" class="row container">
+            <!-- <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
             <li style="" class="tab"><a [ngClass]="{'active': type=='lunch'}" (click)="typeSelected('lunch')">Lunch</a>
             </li>
             <li class="tab"><a [ngClass]="{'active': type=='dinner'}" (click)="typeSelected('dinner')">Dinner</a>
             </li>
          </ul> -->
-         <div class="col s6">
-            <button [ngClass]="{'active_button': type=='lunch','type':type!='lunch'}" #btn (click)="typeSelected('lunch',btn)" class="">
-               <span [ngClass]="{'active_type_text': type=='lunch','type_text':type!='lunch'}" class="">lunch</span>
-            </button>
-            
+            <div class="col s6">
+               <button [ngClass]="{'active_button': type=='lunch','type':type!='lunch'}" #btn
+                  (click)="typeSelected('lunch',btn)" class="">
+                  <span [ngClass]="{'active_type_text': type=='lunch','type_text':type!='lunch'}" class="">lunch</span>
+               </button>
+
+            </div>
+            <div class="col s6">
+               <button [ngClass]="{'active_type': type=='dinner','type':type!='dinner'}" #btn2
+                  (click)="typeSelected('dinner',btn2)" class="active_button">
+                  <span [ngClass]="{'active_type_text': type=='dinner','type_text':type!='dinner'}"
+                     class="type_text">Dinner</span>
+               </button>
+            </div>
          </div>
-         <div class="col s6">
-            <button [ngClass]="{'active_type': type=='dinner','type':type!='dinner'}" #btn2  (click)="typeSelected('dinner',btn2)" class="active_button">
-               <span [ngClass]="{'active_type_text': type=='dinner','type_text':type!='dinner'}" class="type_text">Dinner</span>
-            </button>
-         </div>
-      </div>
-  
+
          <div class="">
-            <div style="text-align: center; margin-top: 30px;" >
+            <div style="text-align: center; margin-top: 30px;">
                <a (click)="daySelected(1,chip)">
                   <div [ngClass]="{'selected': day=='1'}" #chip style="" class="chip">
                      Mon
@@ -67,7 +70,7 @@
                      Fri
                   </div>
                </a>
-               
+
                <div style="text-align: center; margin-top: 4px;">
                   <a (click)="daySelected(6,chip6)">
                      <div [ngClass]="{'selected': day=='6'}" #chip6 style="" class="chip">
@@ -78,12 +81,13 @@
                      <div [ngClass]="{'selected': day=='0'}" #chip7 style="" class="chip">
                         Sun
                      </div>
-                  </a></div>
+                  </a>
+               </div>
             </div>
-            </div>
-         <div style=" margin-top: 18px;" id="test1" class="col s12">
+         </div>
+         <div *ngIf="notFound" id="tes1" class=" ">
             <div style="text-align: center;" _ngcontent-tcm-c57="" class="card">
-               <div *ngIf="notFound" class="col m4 s12">
+               <div class="col m4 s12">
                   <img style="width: 40%; " src="../../assets/feather_search.png" alt="">
                   <h2 style="font-family: Poppins; ">NO ITEM FOUND</h2>
                   <p style="font-family: Poppins; color : #FF7000">Try to search for different day!</p>
@@ -97,16 +101,18 @@
                      <p *ngIf = "type=='dinner'"> You Have To Place Dinner Order Before 4 PM!</p>
                   </div> -->
                <div>
-                     
-                  <div  class="col m4 s12" *ngFor="let foodItem of foodItems">
-                     <a (click)= "openOrderDetail(foodItem)">
-                        <app-ards [foodItem]='foodItem'></app-ards>
-                     </a>
-                  </div>
+
                </div>
+
             </div>
          </div>
       </div>
+   </div>
+
+   <div class="row">
+      <a *ngFor="let foodItem of foodItems" (click)="openOrderDetail(foodItem)">
+         <app-ards [foodItem]='foodItem'></app-ards>
+      </a>
    </div>
 </div>
 <mat-form-field style="visibility: hidden;;" class="example-full-width">

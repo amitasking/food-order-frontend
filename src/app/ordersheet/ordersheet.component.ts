@@ -12,6 +12,7 @@ declare var M: any;
 export class OrdersheetComponent implements OnInit {
   selectedOrg: string = ''
   selectedMenuType: string = ''
+  toMail : string = ''
   constructor(private http: HttpClient, private notifier: NotifierService) { }
   organizations: any = []
 
@@ -30,7 +31,7 @@ export class OrdersheetComponent implements OnInit {
 
   getOrderSheet() {
     if (this.selectedOrg && this.selectedMenuType) {
-      this.http.get(environment.domain + `/admin/allorders?type=${this.selectedMenuType}&org=${this.selectedOrg}`).subscribe(res => {
+      this.http.get(environment.domain + `/admin/allorders?type=${this.selectedMenuType}&org=${this.selectedOrg}&toMail=${this.toMail}`).subscribe(res => {
 
       }, err => {
         M.toast({ html: err.error });
