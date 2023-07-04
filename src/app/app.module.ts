@@ -56,6 +56,8 @@ import { OrdersheetComponent } from './ordersheet/ordersheet.component';
 import {MatSelectModule} from '@angular/material/select';
 import { NotificationComponent } from './notification/notification.component';
 import {TextFieldModule} from '@angular/cdk/text-field';
+//import { HZDatePickerModule } from 'ng2-hz-datepicker';
+
 @NgModule({
   declarations: [
     
@@ -81,6 +83,8 @@ import {TextFieldModule} from '@angular/cdk/text-field';
    // QrCodeGenratorComponent
   ],
   imports: [
+    
+   //HZDatePickerModule.forRoot(),
     TextFieldModule,
     MatSelectModule,
     MatFormFieldModule,

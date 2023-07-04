@@ -20,13 +20,8 @@
       </div> -->
 
       <div style="margin-top: 18px;" class="row  container">
-         <div style="" class="row container">
-            <!-- <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
-            <li style="" class="tab"><a [ngClass]="{'active': type=='lunch'}" (click)="typeSelected('lunch')">Lunch</a>
-            </li>
-            <li class="tab"><a [ngClass]="{'active': type=='dinner'}" (click)="typeSelected('dinner')">Dinner</a>
-            </li>
-         </ul> -->
+         <!-- <divlucn
+             style="" class="row container">
             <div class="col s6">
                <button [ngClass]="{'active_button': type=='lunch','type':type!='lunch'}" #btn
                   (click)="typeSelected('lunch',btn)" class="">
@@ -41,10 +36,16 @@
                      class="type_text">Dinner</span>
                </button>
             </div>
+         </div> -->
+         <div style="overflow-y: auto;  display: flex;
+         flex-direction: ;
+         flex-wrap: ;">
+            <button mat-button  *ngFor="let date of dates" (click)="daySelected(1)" style="padding: 0%;  margin-left: 5px;" > <p>{{date}}</p></button>
+      
          </div>
-
-         <div class="">
+         <!-- <div class="">
             <div style="text-align: center; margin-top: 30px;">
+               
                <a (click)="daySelected(1,chip)">
                   <div [ngClass]="{'selected': day=='1'}" #chip style="" class="chip">
                      Mon
@@ -84,7 +85,7 @@
                   </a>
                </div>
             </div>
-         </div>
+         </div> -->
          <div *ngIf="notFound" id="tes1" class=" ">
             <div style="text-align: center;" _ngcontent-tcm-c57="" class="card">
                <div class="col m4 s12">
@@ -108,8 +109,21 @@
          </div>
       </div>
    </div>
-
+   <div style="text-align: center; margin-top: 30px;" class="row container">
+     <p style="font-family: Poppins; font-weight: 600; font-size: large;">{{currentDate}}</p>
+   </div>
    <div  class="row">
+      <div class="container">
+        <p style="color: grey; font-family: Poppins; font-weight: 600;">LUNCH</p>
+      </div>
+      <a *ngFor="let foodItem of foodItems" (click)="openOrderDetail(foodItem)">
+         <app-ards [foodItem]='foodItem'></app-ards>
+      </a>
+   </div>
+   <div  class="row">
+      <div class="container">
+        <p style="color: grey; font-family: Poppins; font-weight: 600;">DINNER</p>
+      </div>
       <a *ngFor="let foodItem of foodItems" (click)="openOrderDetail(foodItem)">
          <app-ards [foodItem]='foodItem'></app-ards>
       </a>

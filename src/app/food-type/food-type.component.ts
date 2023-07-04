@@ -25,7 +25,26 @@ export class FoodTypeComponent implements OnInit {
   fragment: any = null
   foodItems: [] = []
   type: any = ""
+  currentDate: any = new Date()
   day : any = ""
+  dates : string[] = [];
+  
+
+  fillDates(){
+    var currentDate = new Date();
+    this.dates.push(this.dayMap.get(currentDate.getDay())?.slice(0,3) + " " + currentDate.getDate());
+
+// Loop to print the next 7 days
+for (var i = 0; i < 6; i++) {
+  // Get the date string in the format "Day, Month Date, Year"
+  var dateString = currentDate.toLocaleDateString("en-US", { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' });
+
+  // Increment the current date by 1 day
+  currentDate.setDate(currentDate.getDate() + 1);
+  this.dates.push(this.dayMap.get(currentDate.getDay())?.slice(0,3) + " " + currentDate.getDate());
+
+}
+  }
   notFound = false;
   constructor(private orderService : OrderService, private _bottomSheet: MatBottomSheet, private router: Router, private route: ActivatedRoute, private foodMenuService: FoodMenuService) { 
     const modalElement = document.getElementById('myModal');
@@ -45,6 +64,25 @@ export class FoodTypeComponent implements OnInit {
 
   )
 
+  monthMap = new Map(
+    [
+      [0, "Jan"],
+      [1, "Feb"],
+      [2, "Mar"],
+      [3, "Apr"],
+      [4, "May"],
+      [5,"Jun"],
+      [6,"Jul"],
+      [7,"Aug"],
+      [8,"Sep"],
+      [9,"Oct"],
+      [10,"Nov"],
+      [11,"Dec"],
+
+    ]
+
+  )
+
 timeover = false;
   displayErrorImage(res :any){
        //  console.log("Current time is before 10 AM.");
@@ -59,6 +97,8 @@ timeover = false;
   }
   
   ngOnInit(): void {
+    this.currentDate = this.dayMap.get(new Date().getDay()) + ', ' +  new Date().getDate() + " " +  this.monthMap.get(new Date().getMonth())
+    this.fillDates()
     this.day = this.defaultDate.getDay();
     this.foodMenuService.daySelectedEvent.subscribe(res => {
       this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, res).subscribe((res: any) => {
@@ -150,16 +190,16 @@ timeover = false;
 
   prevSelected : any
   selectedDay : any
-  daySelected (day : number,chip : HTMLElement) {
+  daySelected (day : number) {
     this.day = day
-    if(this.prevSelected == chip) 
-      return;
+    // if(this.prevSelected == chip) 
+    //   return;
     this.selectedDay = day
-    chip.classList.add('selected')
-    if(this.prevSelected)
-       this.prevSelected.classList.remove('selected')
-    this.prevSelected = chip
-    console.log(this.prevSelected)
+    // chip.classList.add('selected')
+    // if(this.prevSelected)
+    //    this.prevSelected.classList.remove('selected')
+    // this.prevSelected = chip
+ //   console.log(this.prevSelected)
     this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, day).subscribe((res: any) => {
       this.displayErrorImage(res)
       console.log(res);

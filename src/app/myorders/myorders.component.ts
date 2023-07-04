@@ -35,6 +35,6 @@ export class MyordersComponent implements OnInit {
     })
   }
 
-
+  cancelOrder(){}
 
 }
