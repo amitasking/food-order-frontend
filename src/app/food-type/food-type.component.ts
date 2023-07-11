@@ -5,7 +5,7 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { FormControl } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
-import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { OrderService } from '../services/order.service';
 declare var M: any;
 
@@ -17,36 +17,42 @@ declare var M: any;
 export class FoodTypeComponent implements OnInit {
   ngAfterViewInit() {
     // Initialize the modal
-   
+
   }
   @ViewChild('picker') datePicker!: MatDatepicker<Date>;
   @ViewChild('dialog') dialog!: MatDialog;
   dateControl: FormControl = new FormControl();
   fragment: any = null
-  foodItems: [] = []
+  foodItems: any
   type: any = ""
-  currentDate: any = new Date()
-  day : any = ""
-  dates : string[] = [];
-  
+  currentDate: Date = new Date()
+  day: any = ""
+  dates: Date[] = [];
 
-  fillDates(){
+loading = true;
+
+  fillDates() {
     var currentDate = new Date();
-    this.dates.push(this.dayMap.get(currentDate.getDay())?.slice(0,3) + " " + currentDate.getDate());
+    //this.dates.push(this.dayMap.get(currentDate.getDay())?.slice(0,3) + " " + currentDate.getDate());
+    this.dates.push(new Date())
+    
+    // Loop to print the next 7 days
+    for (var i = 0; i < 6; i++) {
+      // Get the date string in the format "Day, Month Date, Year"
+  
+      // Increment the current date by 1 day
+      currentDate.setDate(currentDate.getDate() + 1);
+      //this.dates.push(this.dayMap.get(currentDate.getDay())?.slice(0,3) + " " + currentDate.getDate());
+      console.log("pushed " + currentDate);
 
-// Loop to print the next 7 days
-for (var i = 0; i < 6; i++) {
-  // Get the date string in the format "Day, Month Date, Year"
-  var dateString = currentDate.toLocaleDateString("en-US", { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' });
+      this.dates.push(new Date(currentDate))
+    }
 
-  // Increment the current date by 1 day
-  currentDate.setDate(currentDate.getDate() + 1);
-  this.dates.push(this.dayMap.get(currentDate.getDay())?.slice(0,3) + " " + currentDate.getDate());
+   // console.log(this.dates);
 
-}
   }
   notFound = false;
-  constructor(private orderService : OrderService, private _bottomSheet: MatBottomSheet, private router: Router, private route: ActivatedRoute, private foodMenuService: FoodMenuService) { 
+  constructor(private orderService: OrderService, private _bottomSheet: MatBottomSheet, private router: Router, private route: ActivatedRoute, private foodMenuService: FoodMenuService) {
     const modalElement = document.getElementById('myModal');
     M.Modal.init(modalElement);
   }
@@ -58,8 +64,8 @@ for (var i = 0; i < 6; i++) {
       [2, "Tuesday"],
       [3, "Wednesday"],
       [4, "Thursday"],
-      [5,"Friday"],
-      [6,"Saturday"]
+      [5, "Friday"],
+      [6, "Saturday"]
     ]
 
   )
@@ -71,43 +77,51 @@ for (var i = 0; i < 6; i++) {
       [2, "Mar"],
       [3, "Apr"],
       [4, "May"],
-      [5,"Jun"],
-      [6,"Jul"],
-      [7,"Aug"],
-      [8,"Sep"],
-      [9,"Oct"],
-      [10,"Nov"],
-      [11,"Dec"],
+      [5, "Jun"],
+      [6, "Jul"],
+      [7, "Aug"],
+      [8, "Sep"],
+      [9, "Oct"],
+      [10, "Nov"],
+      [11, "Dec"],
 
     ]
 
   )
 
-timeover = false;
-  displayErrorImage(res :any){
-       //  console.log("Current time is before 10 AM.");
-       this.notFound = false;
-  
-    if(!res || res.length == 0){
+  timeover = false;
+  displayErrorImage(res: any) {
+    //  console.log("Current time is before 10 AM.");
+    this.notFound = false;
+
+    if (!res || res.length == 0) {
       this.notFound = true;
     }
-    else 
-    this.notFound = false
+    else
+      this.notFound = false
 
   }
-  
+
   ngOnInit(): void {
-    this.currentDate = this.dayMap.get(new Date().getDay()) + ', ' +  new Date().getDate() + " " +  this.monthMap.get(new Date().getMonth())
+    //this.currentDate = this.dayMap.get(new Date().getDay()) + ', ' + new Date().getDate() + " " + this.monthMap.get(new Date().getMonth())
     this.fillDates()
-    this.day = this.defaultDate.getDay();
-    this.foodMenuService.daySelectedEvent.subscribe(res => {
-      this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, res).subscribe((res: any) => {
-        this.displayErrorImage(res)
-        console.log(res);
-        this.day = res
-        this.foodItems = res
-      })
+    this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, new Date()).subscribe((res: any) => {
+      this.displayErrorImage(res)
+      console.log(res);
+      this.foodItems = res
+
+    },err=>{},()=>{
+      this.loading = false
     })
+    this.day = this.defaultDate.getDay();
+    // this.foodMenuService.daySelectedEvent.subscribe(res => {
+    //   this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, res).subscribe((res: any) => {
+    //     this.displayErrorImage(res)
+    //     console.log(res);
+    //     this.day = res
+    //     this.foodItems = res
+    //   })
+    // })
     // alert(this.defaultDate)
     this.route.queryParamMap.subscribe((params: ParamMap) => {
       // Access query parameters here
@@ -116,27 +130,27 @@ timeover = false;
       M.Modal.init(modalElement);
       const queryParam1 = params.get('type');
       this.type = queryParam1
-     // this.type = queryParam1
-     // alert(this.type)
+      // this.type = queryParam1
+      // alert(this.type)
       if (!queryParam1) {
         this.type = 'lunch'
-        
+
         this.router.navigate([''], { queryParams: { type: 'lunch' } });
       }
       // Perform actions based on query parameter values
       // alert('Query Parameter 1:' + queryParam1);
       // alert('Query Parameter 2:' + queryParam2);
-      this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, this.day).subscribe((res: any) => {
-        this.displayErrorImage(res)
-        console.log(res);
-        this.foodItems = res
-       
-      })
+      // this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, this.day).subscribe((res: any) => {
+      //   this.displayErrorImage(res)
+      //   console.log(res);
+      //   this.foodItems = res
+
+      // })
     });
   };
 
 
-  typeSelected(foodType: string, btn : HTMLElement) {
+  typeSelected(foodType: string, btn: HTMLElement) {
     // if(btn.classList.contains('type')){
     //   btn.classList.remove('type');
     //   btn.classList.remove('type_text')
@@ -148,7 +162,7 @@ timeover = false;
     //   btn.classList.remove('active_type_text')
     //   btn.classList.add('type')
     //   btn.classList.add('type_text')      
-      
+
     // }
 
 
@@ -167,7 +181,7 @@ timeover = false;
   // }
 
 
-  getDay(){
+  getDay() {
     return this.dayMap.get(this.day);
   }
 
@@ -176,39 +190,45 @@ timeover = false;
     //this.datePicker.open();
     this._bottomSheet.open(BottomSheetComponent);
   }
-  selectedDate : any
-  onDateSelect($event : any){
-    const selectedDate: Date =  $event.value
-    console.log(this.selectedDate);
-    this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, selectedDate.getDay()).subscribe((res: any) => {
-      this.displayErrorImage(res)
-      console.log(res);
-      this.foodItems = res
-    })
-    
-  }
+  selectedDate: any
+  // onDateSelect($event: any) {
+  //   const selectedDate: Date = $event.value
+  //   console.log(this.selectedDate);
+  //   this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, selectedDate.getDay()).subscribe((res: any) => {
+  //     this.displayErrorImage(res)
+  //     console.log(res);
+  //     this.foodItems = res
+  //   })
 
-  prevSelected : any
-  selectedDay : any
-  daySelected (day : number) {
-    this.day = day
+  // }
+
+  prevSelected: any
+  selectedDay: any
+  dateSelected(date: Date) {
+    //alert(day.getDate())
+   // this.day = day
     // if(this.prevSelected == chip) 
     //   return;
-    this.selectedDay = day
+   // this.selectedDay = day
     // chip.classList.add('selected')
     // if(this.prevSelected)
     //    this.prevSelected.classList.remove('selected')
     // this.prevSelected = chip
- //   console.log(this.prevSelected)
-    this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type, day).subscribe((res: any) => {
+    //   console.log(this.prevSelected)
+    this.loading = true
+    this.currentDate = date
+    this.foodMenuService.getFoodItemsAccordingToTypeandDay(this.type,  date).subscribe((res: any) => {
+     
       this.displayErrorImage(res)
       console.log(res);
       this.foodItems = res
+    },err=>{},()=>{
+      this.loading = false
     })
   }
-  openOrderDetail(foodItem : any){
+  openOrderDetail(foodItem: any) {
     this.orderService.openOrderDetail.emit(foodItem);
-    this.router.navigate(['food-detail',foodItem.id]);
+    this.router.navigate(['food-detail', foodItem.id]);
 
   }
 
