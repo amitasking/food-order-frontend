@@ -6,26 +6,40 @@
     <mat-spinner></mat-spinner>
   </div>
   <div *ngIf="!progress && myorders && myorders.length > 0" style="height: 100vh; margin-top: 10%;" class="  row ">
-    <p style="margin-left:7% ; margin-bottom: 20px ; font-family: Poppins; font-size: small; color: black; font-weight: 600;">Orders From Jun 24</p>
-    <div  *ngFor="let order of myorders" class="">
-      <div  style="margin-bottom: 20px;" class=" col s12 food_item_list">
-        <div style="" class="col s5">
+    <p
+      style="margin-left:7% ; margin-bottom: 20px ; font-family: Poppins; font-size: small; color: black; font-weight: 600;">
+      Orders From Jun 24</p>
+    <div *ngFor="let order of myorders" class="">
+      <div style="margin-bottom: 20px;" class=" col s12 food_item_list">
+        <div style="" class="col s4">
           <img class="food_item_pic" [src]="order.FoodItem.image" alt="">
         </div>
-        <div style="padding-top: 5px ; padding-bottom: 10px;" class="col s7">
+        <div class="col s8">
           <p style="" class="food_item_heading">{{order.FoodItem.name | titlecase}}</p>
-            <span style="color: grey; font-size: small;"> x2  
-            <a (click) = "cancelOrder()">
-              <i style="margin-left: 60%;" class="material-icons red-text">cancel</i>
-            </a>
-            </span>
+          <div class="row">
+            <div class="col s9">
+              <div style="font-size: 25px; font-weight: 900; color: black; font-size: medium; letter-spacing: 4px;">OTP: {{order.otp}}
+              </div>
+
+            </div>
+            <div *ngIf="order.status=='Pending'" class="col s3">
+              <a (click)="cancelOrder()">
+                <i style="font-size: 25px;" class="material-icons grey-text">cancel</i>
+              </a>
+
+            </div>
+          </div>
+          <!--  -->
+          <!-- <p style="" class="food_item_heading">{{order.otp | titlecase}}</p> -->
         </div>
+        <!-- <div style=" margin-right: 5px;"  class="col s2">
+         
+        </div> -->
       </div>
 
     </div>
-    
+
   </div>
-  
 
   <div *ngIf="!progress && !(myorders && myorders.length > 0)" style="text-align: center; margin-top: 30%;" class="">
     <img style="height: 150px; " src="../../assets/feather_search.png" alt="">
@@ -34,16 +48,16 @@
 </div>
 
 
-  <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
   </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
