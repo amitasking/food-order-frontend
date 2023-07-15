@@ -1,8 +1,10 @@
 <div>
    <amplify-authenticator style="margin-top: 20%;">
-      <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
+    
+      <ng-template amplifySlot="authenticated"  let-user="user" let-signOut="signOut">
          <!-- <a (click)="signOut()" style = "color: black !important;" class="btn-floating btn-large   "   style=" top : 10px;" ><i class="material-icons">exit_to_app</i></a> -->
-        <div class = "overlay-button">
+      
+         <div class = "overlay-button">
            <a class="overlay" (click)="drawer.toggle(); sideBarState = !sideBarState">
               <i *ngIf = "!sideBarState"
                 class="material-icons">menu

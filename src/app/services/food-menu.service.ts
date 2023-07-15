@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FoodItem } from '../models/FoodItem.model';
 import { EventEmitter, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { DatePipe } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,9 +18,11 @@ export class FoodMenuService {
     return this.http.get<FoodItem[]>(environment.domain + "/fooditem?type=" + type)
   }
 
-  getFoodItemsAccordingToTypeandDay(type: string, day: Number) {
+  getFoodItemsAccordingToTypeandDay(type: string, date: Date) {
     // https://r8mm4pjf3g.execute-api.us-east-1.amazonaws.com/dev/
-    return this.http.get<FoodItem[]>(environment.domain + "/fooditem?type=" + type + "&day=" + day)
+    let datePipe = new DatePipe('en-US');
+    const formattedDate = datePipe.transform(new Date(date), 'yyyy-MM-dd');
+    return this.http.get<FoodItem[]>(environment.domain + "/fooditem?" + "date=" +formattedDate)
   }
 
   getFoodItemByid(id: any) {

@@ -1,21 +1,51 @@
 <div style="height: 100vh;">
-  <div style="margin-top: 12%">
+  <div style="margin-top: 14%">
     <h2 style="text-align: center; font-family: Poppins; font-weight: 600;">My Orders</h2>
   </div>
-  <div  *ngIf="progress" style="text-align: center !important; margin-left: 34%; margin-top: 30%;" >
-    <mat-spinner ></mat-spinner>
+  <div *ngIf="progress" style="text-align: center !important; margin-left: 34%; margin-top: 30%;">
+    <mat-spinner></mat-spinner>
   </div>
-  <div *ngIf="!progress && myorders && myorders.length > 0" style="height: 100vh;" class="row ">
-    <div class="col s12 ">
-      <ul class="collection">
-        <li *ngFor="let order of myorders" class="collection-item avatar">
-          <img *ngIf="order.FoodItem.image" [src]="order.FoodItem.image" alt="" class="circle">
-          <span class="title">{{order.FoodItem.name}}</span>
-          <p>{{dayMap.get(order.FoodItem.servedOn)}} <br>
-          </p>
-        </li>
-      </ul>
+  <div *ngIf="!progress && myorders && myorders.length > 0" style="height: 100vh; margin-top: 10%;" class="  row ">
+
+    <div *ngFor="let order of myorders" class="">
+      <div style="margin-bottom: 0px;" class=" col s12 food_item_list">
+        <div style="" class="col s4">
+          <img class="food_item_pic" [src]="order.FoodItem.image" alt="">
+        </div>
+        <div class="col s8">
+          <p style="" class="food_item_heading">{{order.FoodItem.name | titlecase}}</p>
+          <div class="row">
+            <div class="col s9">
+              <div style="font-size: 25px; font-weight: 900; color: black; font-size: medium; letter-spacing: 4px;">OTP: {{order.otp}}
+              </div>
+            <div style="font-size: x-small; font-family: Poppins;"  class="row">
+              <div class="col s5">
+                <p>{{order.FoodItem.menuType | titlecase}}</p>
+      
+              </div>
+              <div class="col s7">
+                <p>{{order.date | date : 'EEE, dd MMM'}}</p>
+      
+              </div>
+            </div>
+            </div>
+            <div *ngIf="order.status=='PENDING'" class="col s3">
+              <a (click)="cancelOrder()">
+                <i style="font-size: 25px;" class="material-icons grey-text">cancel</i>
+              </a>
+
+            </div>
+          </div>
+          <!--  -->
+          <!-- <p style="" class="food_item_heading">{{order.otp | titlecase}}</p> -->
+        </div>
+        <!-- <div style=" margin-right: 5px;"  class="col s2">
+         
+        </div> -->
+      </div>
+
     </div>
+
   </div>
 
   <div *ngIf="!progress && !(myorders && myorders.length > 0)" style="text-align: center; margin-top: 30%;" class="">
