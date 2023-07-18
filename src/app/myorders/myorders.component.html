@@ -37,7 +37,7 @@
               </div>
             </div>
             <div *ngIf="order.status=='PENDING'" class="col s3">
-              <a (click)="cancelOrder()">
+              <a (click)="cancelOrder(order)">
                 <i style="font-size: 25px;" class="material-icons grey-text">cancel</i>
               </a>
 
